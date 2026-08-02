@@ -8,24 +8,27 @@
 
 ## 当前状态 (最后更新: 2026-08-02 · by AI)
 
-- **阶段**: `项目初始化 — 规范文档已填写，等待用户确认后开始编码`
-- **上一步完成**: 填写 `00-project-context.md`、`01-requirements.md`、`PROGRESS.md`（第一批 TODO）
-- **下一步**: 用户确认规范文档 → 建 GitHub 仓库 → 开 feature 分支 → 按 US-1 → US-7 顺序逐模块开发
-- **阻塞项**: 等待用户确认规范文档内容
+- **阶段**: `US-1 开发完成，本地自检全绿，等待推送 PR`
+- **六步流程位置**: 第④步（本地 CI 自检）已完成 → 准备第⑤步（推送 + 提 PR）
+- **上一步完成**: 项目骨架全部代码（pyproject.toml / Dockerfile / CI workflow / app / tests），ruff + pytest 全绿
+- **下一步**: git push → 提 PR → CI 复检 → 人工合并
+- **分支**: `feature/1-project-init`
+- **阻塞项**: 无
 
 ---
 
 ## 待办清单 (TODO,按优先级)
 
 ### 第一批：初始化项目工程化与 CI（US-1）
-- [ ] ① 创建 GitHub 仓库 `banksys_sy_lixiaohua`（开源）
-- [ ] ② 初始化项目骨架：`app/`、`tests/`、`Dockerfile`、`.github/workflows/ci.yml`、`pyproject.toml`、`requirements.txt`、`requirements-dev.txt`、`.gitignore`
-- [ ] ③ 实现 `app/main.py`（Streamlit 入口,首页）+ `app/pages/`（多页占位）
-- [ ] ④ 配置 ruff（pyproject.toml）
-- [ ] ⑤ 编写 Dockerfile（基于 python:3.11-slim,容器内端口 8501,支持 PIP_INDEX_URL 参数）
-- [ ] ⑥ 编写 CI workflow（ruff format check + ruff check + pytest + docker build）
-- [ ] ⑦ 本地自检全绿 → 提 PR → CI 绿 → 人工合并
-- [ ] ⑧ 本地 `docker build && docker run -p 8888:8501` 验证健康检查
+- [x] ① 创建 GitHub 仓库 `banksys_sy_lixiaohua`（开源）→ https://github.com/kriby2/banksys_sy_lixiaohua
+- [x] ② 初始化项目骨架：`app/`、`tests/`、`Dockerfile`、`.github/workflows/ci.yml`、`pyproject.toml`、`requirements.txt`、`requirements-dev.txt`、`.gitignore`
+- [x] ③ 实现 `app/main.py`（Streamlit 入口,首页）+ `app/pages/`（多页占位）
+- [x] ④ 配置 ruff（pyproject.toml）+ 排除 pages/ 的 N999 规则
+- [x] ⑤ 编写 Dockerfile（python:3.11-slim, ENV PYTHONPATH=/app, Python urllib 健康检查, 无 apt/curl）
+- [x] ⑥ 编写 CI workflow（ruff format check + ruff check + pytest --cov + docker build）
+- [x] ⑦ 本地自检全绿：ruff format ✓ / ruff check ✓ / pytest 3/3 ✓ / 100% 覆盖率
+- [ ] ⑧ git push → 提 PR → CI 复检全绿 → 人工合并
+- [ ] ⑨ 本地 `docker build && docker run -p 8888:8501` 验证健康检查
 
 ### 第二批：数据加载与预处理模块（US-2）
 - [ ] ① 实现 `app/models/data_loader.py`（load_train_data / load_test_data）

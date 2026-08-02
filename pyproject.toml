@@ -1,0 +1,22 @@
+[project]
+name = "banksys_sy_lixiaohua"
+version = "0.1.0"
+description = "银行营销数据分析与认购预测系统"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/pages/*.py" = ["N999"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["unit: unit tests", "slow: slow tests"]
