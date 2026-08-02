@@ -4,7 +4,8 @@ from pathlib import Path
 
 import pytest
 
-from app.ml.train import MODEL_PATH, train as do_train
+from app.ml.train import MODEL_PATH
+from app.ml.train import train as do_train
 from app.models.predictor import FEATURE_COLS, load_model, predict
 
 
