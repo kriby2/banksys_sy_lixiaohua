@@ -31,7 +31,7 @@ jobs:
         run: python -m app.ml.train --overwrite
 
       - name: Pytest with coverage
-        run: pytest --cov=app
+        run: pytest --cov=app/models --cov=app/ml --cov-fail-under=80
 
       - name: Docker build
         run: docker build -t banksys_sy_lixiaohua .

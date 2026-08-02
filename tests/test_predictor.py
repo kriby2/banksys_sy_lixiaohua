@@ -4,7 +4,18 @@ from pathlib import Path
 
 import pytest
 
+from app.ml.train import MODEL_PATH, train as do_train
 from app.models.predictor import FEATURE_COLS, load_model, predict
+
+
+@pytest.fixture(scope="module", autouse=True)
+def ensure_model():
+    """确保预测测试运行前模型文件存在."""
+    if MODEL_PATH.exists():
+        MODEL_PATH.unlink()
+    do_train()
+    yield
+    # 不主动删除，留给后续测试使用
 
 HIGH_PROFILE = {
     "age": 30,

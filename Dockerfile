@@ -10,6 +10,8 @@ RUN pip install --no-cache-dir --timeout 120 -i "${PIP_INDEX_URL}" -r requiremen
 COPY app/ app/
 COPY data/ data/
 
+RUN python -m app.ml.train --overwrite
+
 ENV PYTHONPATH=/app
 
 EXPOSE 8501
