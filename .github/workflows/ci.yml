@@ -27,6 +27,9 @@ jobs:
       - name: Ruff lint check
         run: ruff check .
 
+      - name: Train model for tests
+        run: python -m app.ml.train --overwrite
+
       - name: Pytest with coverage
         run: pytest --cov=app
 
