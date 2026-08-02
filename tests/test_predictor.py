@@ -17,6 +17,7 @@ def ensure_model():
     yield
     # 不主动删除，留给后续测试使用
 
+
 HIGH_PROFILE = {
     "age": 30,
     "job": "student",
